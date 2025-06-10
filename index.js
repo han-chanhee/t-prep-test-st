@@ -16,7 +16,7 @@ app.use(express.json());
 // 프론트엔드(HTML)와 백엔드(서버)가 다른 주소에서 실행될 때 필요합니다.
 const cors = require("cors");
 app.use(cors());
-
+app.use(express.static("public"));
 /**
  * API 엔드포인트: POST /generate-link
  * 요청 본문(Request Body)으로 장면 데이터를 받아 공유 링크를 생성하여 반환합니다.
