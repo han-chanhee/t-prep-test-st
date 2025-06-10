@@ -42,10 +42,9 @@ app.post("/generate-link", (req, res) => {
     // 6. 공유 링크 생성 로직
     const dataToEncode = { scenes: scenes };
     const jsonString = JSON.stringify(dataToEncode);
-    const base64String = Buffer.from(encodeURIComponent(jsonString)).toString(
-      "base64"
-    );
-    const shareableLink = `${viewerUrl}?data=${base64String}`;
+    const base64String = Buffer.from(jsonString).toString("base64");
+    const urlSafeBase64String = encodeURIComponent(base64String);
+    const shareableLink = `${viewerUrl}?data=${urlSafeBase64String}`;
 
     // 7. 성공 응답으로 생성된 링크를 JSON 형태로 반환
     console.log("링크 생성 성공:", shareableLink);

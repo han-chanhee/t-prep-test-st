@@ -51,7 +51,7 @@
           }
 
           // 2. Base64 및 URI 디코딩을 통해 원본 JSON 데이터 복원
-          const decodedJson = decodeURIComponent(atob(data));
+          const decodedJson = atob(decodeURIComponent(data));
           const { scenes, characters } = JSON.parse(decodedJson); // characters 데이터도 받을 수 있도록 추가
 
           if (!scenes || !Array.isArray(scenes) || scenes.length === 0) {
